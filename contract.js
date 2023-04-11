@@ -9,11 +9,15 @@ class CertNetContract extends Contract {
   }
 
   // Instantiate
-  async instantiate(ctx){
+  async instantiate(ctx) {
     console.log('Chaincode deployed successfully')
   }
 
   // Create Student
+  async createStudent(ctx, studentId, name, email) {
+    // Composite key
+    const studentKey = ctx.stub.createCompositeKey('certnet.student', )
+  }
   // Get Student
   // Issue Certificate
   // Verify Certificate
