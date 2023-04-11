@@ -1,5 +1,5 @@
 'use strict';
 
-const certificateContract = require('./contract.js')
+import certificateContract from './contract.js';
 
-module.exports.contracts = [certificateContract]
+export const contracts = [certificateContract]
