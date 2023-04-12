@@ -27,15 +27,28 @@ class CertNetContract extends Contract {
       updatedAt: ctx.stub.getTxTimestamp(),
     }
     const studentBuffer = Buffer.from(JSON.stringify(newStudent));
-    
+
     await ctx.stub.putState(studentKey, studentBuffer);
 
     return newStudent;
 
   }
-  
+
   // Get Student
+  async getStudent(ctx, studentId) {
+    const studentKey = ctx.stub.createCompositeKey('certnet.student', [studentId])
+    const studentBuffer = await ctx.stub.getState(studentKey);
+
+    if (studentBuffer) {
+      return JSON.parse(studentBuffer.toString());
+    }
+
+    return `Asset with key ${studentId} does not exists on the network`;
+  }
+
   // Issue Certificate
+
+
   // Verify Certificate
 }
 
